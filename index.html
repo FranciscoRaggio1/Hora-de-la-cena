@@ -1,18 +1,31 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Buscador de Recetas</title>
+  <title>Cocina en 2´</title>
   <link rel="stylesheet" href="estilos.css">
+ 
 </head>
 <body>
-  <div id="contenedor-busqueda">
-    <h1>Buscador de Recetas</h1>
-    <input id="entrada-ingrediente" type="text" placeholder="Escribe un ingrediente">
-    <button id="boton-buscar">Buscar</button>
+
+  <div id="search-container">
+    <h1>Buscar recetas por ingrediente principal</h1>
+    <select id="ingredient-select">
+      <!-- Aquí se llenarán dinámicamente las opciones de ingredientes desde la API -->
+    </select>
+    <button onclick="searchMeals()">Buscar</button>
   </div>
-  <div id="resultados"></div>
+  <div id="results"></div>
+  <dialog id="ventana-modal">
+    <div id="contenido-modal">
+      <button class="boton-cerrar">&times;</button>
+      <div id="detalles-receta-modal"></div>
+    </div>
+  </dialog>
+  
+  
+
   <script src="script.js"></script>
 </body>
 </html>
