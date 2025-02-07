@@ -65,26 +65,24 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Crear la ventana modal
+  const dialog = document.getElementById("ventana-modal");
   const modal = document.createElement("div");
   modal.id = "recipe-modal";
-  modal.className = "modal hidden";
+  modal.className = "modal hidden";  
   modal.innerHTML = `
-    <div class="modal-content">
-      <span class="close-button">&times;</span>
+    <div class="modal-content">      
       <div id="modal-recipe-details"></div>
     </div>
   `;
-  document.body.appendChild(modal);
+  //<span class="close-button">&times;</span>
+  
+  dialog.appendChild(modal);
 
-  const closeButton = modal.querySelector(".close-button");
+
+
+  const closeButton = dialog.querySelector(".boton-cerrar ");
   closeButton.addEventListener("click", () => {
-    modal.classList.add("hidden");
-  });
-
-  window.addEventListener("click", event => {
-    if (event.target === modal) {
-      modal.classList.add("hidden");
-    }
+    dialog.close();
   });
 
   // Buscar recetas al seleccionar un ingrediente
@@ -140,7 +138,8 @@ document.addEventListener("DOMContentLoaded", () => {
                       </ul>
                     `;
                     modal.classList.remove("hidden");
-                    modal.scrollIntoView({ behavior: "smooth" });
+                    dialog.showModal();
+                    dialog.scrollIntoView({ behavior: "smooth" });
                   });
                 })
                 .catch(error => console.error("Error al obtener detalles de la receta:", error));
