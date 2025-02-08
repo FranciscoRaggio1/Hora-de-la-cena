@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <div id="modal-recipe-details"></div>
     </div>
   `;
-  //<span class="close-button">&times;</span>
+ 
   
   dialog.appendChild(modal);
 
@@ -83,6 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeButton = dialog.querySelector(".boton-cerrar ");
   closeButton.addEventListener("click", () => {
     dialog.close();
+    document.body.style.overflow = "";
   });
 
   // Buscar recetas al seleccionar un ingrediente
@@ -137,9 +138,10 @@ document.addEventListener("DOMContentLoaded", () => {
                           .join("")}
                       </ul>
                     `;
-                    modal.classList.remove("hidden");
+                    modal.classList.remove("hidden");                    
                     dialog.showModal();
-                    dialog.scrollIntoView({ behavior: "smooth" });
+                    document.body.style.overflow = "hidden";
+                    //dialog.scrollIntoView({ behavior: "smooth" });
                   });
                 })
                 .catch(error => console.error("Error al obtener detalles de la receta:", error));
